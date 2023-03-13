@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getPokemonTypes());
   }, [dispatch]);
-  
+
   return (
     <>
       <h3 className="text-center py-3 text-white font-thin md:font-bold md:text-xl">Pokemons</h3>
@@ -19,12 +19,12 @@ const Home = () => {
       <p className="text-white text-sm">POKEMONS BY TYPE</p>
       {types.length < 0 ? <p>No types</p> : (
         <div className="grid grid-cols-2 grid-flow-row gap-0">
-            {types.map((type) => (
-                <div key={type.name}>{type.name}</div>
-            ))}
+          {types.map((type) => (
+            <div key={type.name}>{type.name}</div>
+          ))}
         </div>
       )}
-      
+
     </>
   );
 };
