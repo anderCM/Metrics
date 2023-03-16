@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 
@@ -6,8 +6,6 @@ import Back from '../Back';
 
 const PokemonType = () => {
   const { type } = useParams();
-  const location = useLocation();
-  const url = location.state;
 
   return (
     <>

@@ -1,9 +1,9 @@
 import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
 
-const url = 'https://pokeapi.co/api/v2/type';
+import url from '../../Constans/Url';
 
 export const getPokemonTypes = createAsyncThunk('pokemons/getPokemonTypes', async () => {
-  const response = await fetch(url);
+  const response = await fetch(`${url}/type`);
   const data = await response.json();
   return data.results;
 });
