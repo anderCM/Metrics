@@ -18,12 +18,15 @@ const Home = () => {
   const getbgColor = (index) => {
     const evenRow = Math.floor(index / 2) % 2 === 0;
     const evenColumn = index % 2 === 0;
-    return evenRow ? (evenColumn ? 'bg-category1' : 'bg-category2') : (evenColumn ? 'bg-category2' : 'bg-category1');
+    if (evenRow) {
+      return evenColumn ? 'bg-category1' : 'bg-category2';
+    }
+    return evenColumn ? 'bg-category2' : 'bg-category1';
   };
 
   return (
     <>
-      <div className="py-3 flex justify-between">
+      <div className="py-1 flex justify-between">
         <MenuIcon className="mx-2 text-white" />
         <h3 className="text-center text-white font-thin">Pokemons</h3>
         <SearchIcon className="mx-2 text-white" />
@@ -34,7 +37,11 @@ const Home = () => {
         </div>
         <div className="flex flex-col justify-center text-white">
           <p className="mx-5 font-bold text-xl">POKEMONS</p>
-          <p className="mx-5">{types.length} types</p>
+          <p className="mx-5">
+            {types.length}
+            {' '}
+            types
+          </p>
         </div>
       </div>
       <p className="text-white text-sm px-2 bg-subTitle">POKEMONS BY TYPE</p>
@@ -46,7 +53,7 @@ const Home = () => {
               className={`h-40 ${getbgColor(index)}`}
               key={type.name}
               to={`/pokemons/${type.name}`}
-              type={type.name}
+              state={type.url}
             />
           ))}
         </div>
