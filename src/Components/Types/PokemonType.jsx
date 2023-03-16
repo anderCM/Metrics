@@ -1,12 +1,30 @@
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 
+import { getSinglePokemon, getPokemonDetails } from '../../redux/singlePokemon/SinglePokemonSlice';
+import Loading from '../Loading';
 import Back from '../Back';
 
 const PokemonType = () => {
   const { type } = useParams();
+  const location = useLocation();
+  const url = location.state;
 
+  const dispatch = useDispatch();
+  const { pokemons, isLoading } = useSelector((store) => store.pokemons);
+
+  useEffect(() => {
+    dispatch(getSinglePokemon(url));
+  }, [dispatch, url]);
+
+  useEffect(() => {
+    if (pokemons.length > 0) {
+      dispatch(getPokemonDetails(pokemons));
+    }
+  }, [dispatch, pokemons]);
   return (
     <>
       <div className="py-1 mx-2 flex justify-between">
@@ -26,6 +44,7 @@ const PokemonType = () => {
           </p>
         </div>
       </div>
+      {isLoading && <Loading />}
     </>
   );
 };
