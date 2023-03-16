@@ -47,7 +47,7 @@ const Home = () => {
       <p className="text-white text-sm px-2 bg-subTitle">POKEMONS BY TYPE</p>
       {isLoading && <Loading />}
       {types.length < 0 ? <p>No types</p> : (
-        <div className="grid grid-cols-2 grid-flow-row gap-0">
+        <div className="grid grid-cols-2 gap-0">
           {types.map((type, index) => (
             <Link
               className={`h-40 ${getbgColor(index)}`}
