@@ -7,7 +7,7 @@ const Pokemon = ({
   <div className={`${index % 2 === 0 ? 'bg-category1' : 'bg-category2'} h-20 flex justify-between`}>
     <div className="ml-2 flex items-center">
       <img src={image} alt={pokemon} className="max-h-full" />
-      <p className="text-white">{pokemon}</p>
+      <p className="text-white font-semibold">{pokemon.replace(/^\w/, (c) => c.toUpperCase())}</p>
     </div>
     <div className="flex mr-2 items-center gap-4">
       <p className="text-white">
@@ -25,7 +25,7 @@ Pokemon.propTypes = {
   index: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   pokemon: PropTypes.string.isRequired,
-  moves: PropTypes.string.isRequired,
+  moves: PropTypes.number.isRequired,
 };
 
 export default Pokemon;
