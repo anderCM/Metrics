@@ -7,6 +7,7 @@ import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import { getSinglePokemon, getPokemonDetails } from '../../redux/singlePokemon/SinglePokemonSlice';
 import Loading from '../Loading';
 import Back from '../Back';
+import Pokemon from './Pokemon';
 
 const PokemonType = () => {
   const { type } = useParams();
@@ -14,7 +15,7 @@ const PokemonType = () => {
   const url = location.state;
 
   const dispatch = useDispatch();
-  const { pokemons, isLoading } = useSelector((store) => store.pokemons);
+  const { pokemons, pokemonDetails, isLoading } = useSelector((store) => store.pokemons);
 
   useEffect(() => {
     dispatch(getSinglePokemon(url));
@@ -39,12 +40,31 @@ const PokemonType = () => {
         <div className="flex flex-col text-end justify-center text-white">
           <p className="mx-2 font-bold text-xl">{type.toUpperCase()}</p>
           <p className="mx-2">
+            {pokemonDetails.length}
             {' '}
             types
           </p>
         </div>
       </div>
+      <p className="text-white text-sm px-2 bg-subTitle">
+        {type.toUpperCase()}
+        {' '}
+        POKEMONS
+      </p>
       {isLoading && <Loading />}
+      {pokemonDetails.length < 0 ? <p>No pokemons</p> : (
+        <div className="flex flex-col">
+          {pokemonDetails.map((pokemon, index) => (
+            <Pokemon
+              key={pokemon.id}
+              index={index}
+              image={pokemon.sprites.front_default}
+              pokemon={pokemon.name}
+              moves={pokemon.moves.length}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 };

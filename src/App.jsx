@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Home from './Components/Home';
-import PokemonType from './Components/Types/PokemonType';
+import PokemonType from './Components/Pokemons/PokemonType';
 
 function App() {
   return (
