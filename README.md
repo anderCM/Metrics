@@ -3,7 +3,7 @@
 
 <div align="center">
 
-  <img src="https://w7.pngwing.com/pngs/620/521/png-transparent-poke-ball-pokemon-pokemon-rim-mobile-phones-pokemon.png" alt="logo" width="140"  height="auto" />
+  <img src="https://i.pinimg.com/originals/da/d4/55/dad455563bac8b9198130aa5f75fb930.png" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>POKEMONS</b></h3>
