@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
+import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
+import CategoryIcon from '@mui/icons-material/Category';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
@@ -50,11 +52,20 @@ const Home = () => {
         <div className="grid grid-cols-2 gap-0">
           {types.map((type, index) => (
             <Link
-              className={`h-40 ${getbgColor(index)}`}
+              className={`${getbgColor(index)} pb-4 relative`}
               key={type.name}
               to={`/pokemons/${type.name}`}
               state={type.url}
-            />
+            >
+              <div className="flex flex-col gap-4">
+                <CategoryIcon className="text-iconBlue mx-auto" sx={{ fontSize: 100 }} />
+                <div className="text-right text-white mr-2">
+                  <p className="font-bold -mb-2">{type.name.toUpperCase()}</p>
+                  <p>10</p>
+                </div>
+              </div>
+              <ArrowCircleRightOutlinedIcon className="text-white absolute top-1 right-1" />
+            </Link>
           ))}
         </div>
       )}
