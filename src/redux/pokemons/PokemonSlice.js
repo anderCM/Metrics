@@ -1,4 +1,4 @@
-import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import url from '../../Constans/Url';
 
@@ -12,22 +12,41 @@ const initialState = {
   types: [],
   error: false,
   isLoading: false,
+  filteresType: [],
 };
 
-export default createReducer(initialState, (builder) => {
-  builder
-    .addCase(getPokemonTypes.pending, (state) => ({
-      ...state,
-      isLoading: true,
-    }))
-    .addCase(getPokemonTypes.fulfilled, (state, action) => ({
-      ...state,
-      isLoading: false,
-      types: action.payload,
-    }))
-    .addCase(getPokemonTypes.rejected, (state, action) => ({
-      ...state,
-      isLoading: false,
-      error: action.error.message,
-    }));
+const pokemonsTypeReducer = createSlice({
+  name: 'pokemons',
+  initialState,
+  reducers: {
+    filterPokemonsType: (state, action) => {
+      const searchType = action.payload.toLowerCase();
+      const filtered = state.types.filter((type) => type.name.includes(searchType));
+      return {
+        ...state,
+        filteresType: filtered,
+      };
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getPokemonTypes.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(getPokemonTypes.fulfilled, (state, action) => ({
+        ...state,
+        isLoading: false,
+        types: action.payload,
+        filteresType: action.payload,
+      }))
+      .addCase(getPokemonTypes.rejected, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.error.message,
+      }));
+  },
 });
+
+export const { filterPokemonsType } = pokemonsTypeReducer.actions;
+export default pokemonsTypeReducer.reducer;

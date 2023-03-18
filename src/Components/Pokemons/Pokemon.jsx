@@ -6,7 +6,7 @@ const Pokemon = ({
 }) => (
   <div className={`${index % 2 === 0 ? 'bg-category1' : 'bg-category2'} h-20 flex justify-between`}>
     <div className="ml-2 flex items-center">
-      <img src={image} alt={pokemon} className="max-h-full" />
+      <img src={image} alt={pokemon} className="max-h-full transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300" />
       <p className="text-white font-semibold">{pokemon.replace(/^\w/, (c) => c.toUpperCase())}</p>
     </div>
     <div className="flex mr-2 items-center gap-4">
