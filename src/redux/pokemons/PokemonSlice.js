@@ -50,21 +50,3 @@ const pokemonsTypeReducer = createSlice({
 
 export const { filterPokemonsType } = pokemonsTypeReducer.actions;
 export default pokemonsTypeReducer.reducer;
-
-/* export default createReducer(initialState, (builder) => {
-  builder
-    .addCase(getPokemonTypes.pending, (state) => ({
-      ...state,
-      isLoading: true,
-    }))
-    .addCase(getPokemonTypes.fulfilled, (state, action) => ({
-      ...state,
-      isLoading: false,
-      types: action.payload,
-    }))
-    .addCase(getPokemonTypes.rejected, (state, action) => ({
-      ...state,
-      isLoading: false,
-      error: action.error.message,
-    }));
-}); */
