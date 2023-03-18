@@ -1,7 +1,7 @@
 import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
 
 export const getSinglePokemon = createAsyncThunk('pokemons/getSinglePokemon', async (type) => {
-  const response = await fetch(`${type}?offset=0&limit=10`);
+  const response = await fetch(type);
   const data = await response.json();
   const limitedPokemons = data.pokemon.slice(0, 10);
   return limitedPokemons;
