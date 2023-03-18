@@ -84,7 +84,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Comming Soon](https://github.com/anderCM/bookstore)
+- [Live demo](https://ander-pokemons.netlify.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -177,7 +177,9 @@ If you like this project give a coffee
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank my team
+- I would like to thank my team
+
+- Original idea: Nelson Sakwa on Behance.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
