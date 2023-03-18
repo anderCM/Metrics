@@ -57,7 +57,7 @@ const Home = () => {
       </div>
       {isLoading && <Loading />}
       {filteresType.length <= 0 ? <p className="text-white text-center font-bold min-h-screen">No types</p> : (
-        <div className="min-h-screen"> 
+        <div className="min-h-screen">
           <div className="grid grid-cols-2 gap-0">
             {filteresType.map((type, index) => (
               <Link
