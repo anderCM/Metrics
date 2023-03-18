@@ -35,7 +35,7 @@ const Home = () => {
         <MenuIcon className="mx-2 text-white" />
         <h3 className="text-center text-white font-thin">Pokemons</h3>
         <button type="button" onClick={() => setSearch(!search)}>
-          {!search ? <SearchIcon className="mx-2 text-white" /> : <CloseIcon className="mx-2 text-white" />}
+          {!search ? <SearchIcon data-testid="search-button" className="mx-2 text-white" /> : <CloseIcon className="mx-2 text-white" />}
         </button>
       </div>
       <div className="bg-secondaryBlue grid grid-cols-2 h-40">
@@ -53,11 +53,11 @@ const Home = () => {
       </div>
       <div className="grid grid-cols-2 bg-subTitle">
         <p className="text-white text-sm px-2 my-1">POKEMONS BY TYPE</p>
-        {search && <Searchbar />}
+        {search && <Searchbar data-testid="search-bar" />}
       </div>
       {isLoading && <Loading />}
       {filteresType.length <= 0 ? <p className="text-white text-center font-bold min-h-screen">No types</p> : (
-        <div className="min-h-screen">
+        <div className="min-h-screen"> 
           <div className="grid grid-cols-2 gap-0">
             {filteresType.map((type, index) => (
               <Link
