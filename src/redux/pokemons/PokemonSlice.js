@@ -1,4 +1,4 @@
-import { createAsyncThunk, createReducer, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import url from '../../Constans/Url';
 
@@ -12,23 +12,21 @@ const initialState = {
   types: [],
   error: false,
   isLoading: false,
-  filteresType:[],
+  filteresType: [],
 };
 
 const pokemonsTypeReducer = createSlice({
   name: 'pokemons',
   initialState,
-  reducers:{
+  reducers: {
     filterPokemonsType: (state, action) => {
       const searchType = action.payload.toLowerCase();
-      const filtered = state.types.filter((type) => {
-        return type.name.includes(searchType);
-      });
+      const filtered = state.types.filter((type) => type.name.includes(searchType));
       return {
         ...state,
-        filteresType: filtered
-      }
-    }
+        filteresType: filtered,
+      };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,7 +45,7 @@ const pokemonsTypeReducer = createSlice({
         isLoading: false,
         error: action.error.message,
       }));
-  }
+  },
 });
 
 export const { filterPokemonsType } = pokemonsTypeReducer.actions;

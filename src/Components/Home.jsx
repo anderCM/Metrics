@@ -15,7 +15,7 @@ import Loading from './Loading';
 const Home = () => {
   const [search, setSearch] = useState(false);
   const dispatch = useDispatch();
-  const { types, filteresType, isLoading } = useSelector((store) => store.types);
+  const { filteresType, isLoading } = useSelector((store) => store.types);
   useEffect(() => {
     dispatch(getPokemonTypes());
   }, [dispatch]);
@@ -59,24 +59,24 @@ const Home = () => {
       {filteresType.length <= 0 ? <p className="text-white text-center font-bold min-h-screen">No types</p> : (
         <div className="min-h-screen">
           <div className="grid grid-cols-2 gap-0">
-          {filteresType.map((type, index) => (
-            <Link
-              className={`${getbgColor(index)} pb-4 relative`}
-              key={type.name}
-              to={`/pokemons/${type.name}`}
-              state={type.url}
-            >
-              <div className="flex flex-col gap-4">
-                <CategoryIcon className="text-iconBlue mx-auto" sx={{ fontSize: 100 }} />
-                <div className="text-right text-white mr-2">
-                  <p className="font-bold -mb-2">{type.name.toUpperCase()}</p>
-                  <p>10</p>
+            {filteresType.map((type, index) => (
+              <Link
+                className={`${getbgColor(index)} pb-4 relative`}
+                key={type.name}
+                to={`/pokemons/${type.name}`}
+                state={type.url}
+              >
+                <div className="flex flex-col gap-4">
+                  <CategoryIcon className="text-iconBlue mx-auto" sx={{ fontSize: 100 }} />
+                  <div className="text-right text-white mr-2">
+                    <p className="font-bold -mb-2">{type.name.toUpperCase()}</p>
+                    <p>10</p>
+                  </div>
                 </div>
-              </div>
-              <ArrowCircleRightOutlinedIcon className="text-white absolute top-1 right-1" />
-            </Link>
-          ))}
-        </div>
+                <ArrowCircleRightOutlinedIcon className="text-white absolute top-1 right-1" />
+              </Link>
+            ))}
+          </div>
         </div>
       )}
 
